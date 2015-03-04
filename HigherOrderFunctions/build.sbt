@@ -1,4 +1,4 @@
-name := "FunctionalToolbox"
+name := "HigherOrderFunctions"
 
 version := "1.0"
 
