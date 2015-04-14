@@ -1,5 +1,8 @@
 package demo
 
+import command.Register
+import command.LikeRegister
+
 /**
  * Created by kasonchan on 4/13/15.
  */
@@ -7,9 +10,9 @@ case class Credentials(username: String, password: String)
 
 case class User(firstname: String, middlename: String, lastname: String, credentials: Credentials)
 
-object Demo extends io.IO {
+object Demo extends io.IO with Register {
 
-  def compSort(u1: User, u2: User) = {
+  def compSort(u1: User, u2: User): Boolean = {
     if (u1.firstname != u2.firstname)
       u1.firstname < u2.firstname
     else if (u1.lastname != u2.lastname)
@@ -18,16 +21,16 @@ object Demo extends io.IO {
       u1.credentials.username < u2.credentials.username
   }
 
-  def firstnameComparison(u1: User, u2: User) =
+  def firstnameComparison(u1: User, u2: User): Int =
     u1.firstname.compareTo(u2.firstname)
 
-  def lastnameComparison(u1: User, u2: User) =
+  def lastnameComparison(u1: User, u2: User): Int =
     u1.lastname.compareTo(u2.lastname)
 
-  def usernameComparison(u1: User, u2: User) =
+  def usernameComparison(u1: User, u2: User): Int =
     u1.credentials.username.compareTo(u2.credentials.username)
 
-  def makeComparison(comparisons: ((User, User) => Int)*) = {
+  def makeComparison(comparisons: ((User, User) => Int)*): (User, User) => Int = {
     (u1: User, u2: User) =>
       comparisons.map(cmp => cmp(u1, u2)).find(_ != 0).getOrElse(0)
   }
@@ -41,7 +44,9 @@ object Demo extends io.IO {
 
     val users = Vector(u1, u2, u3, u4, u5)
 
-    //    Replace functional interface with anonymous functions
+    /**
+     * Replace functional interface with anonymous functions
+     */
     val sortWithFirstname = users.sortWith((u1, u2) => u1.firstname < u2.firstname)
     val sortWithLastname = users.sortWith((u1, u2) => u1.lastname < u2.lastname)
     val sortWithUsername = users.sortWith((u1, u2) => u1.credentials.username < u2.credentials.username)
@@ -53,7 +58,9 @@ object Demo extends io.IO {
 
     echo("")
 
-    //    Replace functional interface with named functions
+    /**
+     * Replace functional interface with named functions
+     */
     val sortWithCompSort = users.sortWith(compSort)
 
     //    Print named function result with echo function
@@ -61,10 +68,44 @@ object Demo extends io.IO {
 
     echo("")
 
-    //    Replace state-carrying function interface
+    /**
+     * Replace state-carrying function interface
+     */
     val complicatedComparison = makeComparison(firstnameComparison, lastnameComparison, usernameComparison)
 
     val compareU1U2 = complicatedComparison(u1, u5)
     echo(compareU1U2)
+
+    echo("")
+
+    /**
+     * Replace command
+     */
+    //    Create a new count register
+    val likeRegister = new LikeRegister(0)
+
+    //    Create counts
+    val firstLike = makeLike(likeRegister, 1)
+    val secondLike = makeLike(likeRegister, 1)
+
+    //    Execute counts
+    executeLike(firstLike)
+    executeLike(secondLike)
+
+    //    Print counts
+    echo(likeRegister.total)
+
+    //    Reset total counts
+    likeRegister.total = 0
+
+    //    Print counts
+    echo(likeRegister.total)
+
+    for (like <- counts) {
+      like.apply()
+    }
+
+    //    Print counts
+    echo(likeRegister.total)
   }
 }
