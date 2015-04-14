@@ -1,7 +1,7 @@
 package demo
 
-import command.Register
-import command.LikeRegister
+import builder.{Person, PersonCaseClass}
+import command.{LikeRegister, Register}
 
 /**
  * Created by kasonchan on 4/13/15.
@@ -114,5 +114,54 @@ object Demo extends io.IO with Register {
     //    Print counts
     echo("likeRegister1: " + likeRegister1.total)
     echo("likeRegister2: " + likeRegister2.total)
+
+    echo("")
+
+    /**
+     * Replace builder for immutable object
+     */
+    val p1 = new Person(firstname = "Peter", lastname = "Wong", sex = "Male")
+    val p2 = new Person(firstname = "Evie", middlename = "K.", lastname = "Wu", sex = "Female")
+    val p3 = new Person("Michael", "", "Tso", "Male")
+
+    echo(p1)
+    echo(p2)
+    echo(p3)
+
+    val p4 = PersonCaseClass(firstname = "Kelvin", lastname = "Lei", sex = "Male")
+    val p5 = PersonCaseClass("Kelvin", "S.", "Lei", "Male")
+    val p6 = PersonCaseClass("Kelvin", "", "Lei", "Male")
+    val p7 = PersonCaseClass("Doris", "I.", "Chan", "Female")
+    val p8 = PersonCaseClass(firstname = "Kelvin", lastname = "Lei", sex = "Male")
+
+    echo(p4)
+    echo(p5)
+    echo(p6)
+    echo(p7)
+
+    echo("p4 equals p5? " + p4.equals(p5))
+    echo("p4 equals p6? " + p4.equals(p6))
+    echo("p4 equals p8? " + p4.equals(p8))
+
+    val p9 = p4.copy(middlename = "S.")
+
+    echo(p9)
+
+    echo("p9 equals p5? " + p9.equals(p5))
+
+    val p10 = ("Kason", "Chan")
+
+    echo(p10._1)
+    echo(p10._2)
+
+    //    Pattern matching
+    p10 match {
+      case (firstname, lastname) => {
+        echo("Firstname: " + firstname)
+        echo("Lastname: " + lastname)
+      }
+    }
+
+    echo("")
   }
 }
