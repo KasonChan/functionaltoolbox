@@ -81,31 +81,38 @@ object Demo extends io.IO with Register {
     /**
      * Replace command
      */
-    //    Create a new count register
-    val likeRegister = new LikeRegister(0)
+    //    Create new count registers
+    val likeRegister1 = new LikeRegister(0)
+    val likeRegister2 = new LikeRegister(0)
 
     //    Create counts
-    val firstLike = makeLike(likeRegister, 1)
-    val secondLike = makeLike(likeRegister, 1)
+    val firstLike = makeCount(likeRegister1, 1)
+    val secondLike = makeCount(likeRegister2, 2)
+    val thirdLike = makeCount(likeRegister1, 3)
 
     //    Execute counts
-    executeLike(firstLike)
-    executeLike(secondLike)
+    executeCount(firstLike)
+    executeCount(secondLike)
+    executeCount(thirdLike)
 
     //    Print counts
-    echo(likeRegister.total)
+    echo("likeRegister1: " + likeRegister1.total)
+    echo("likeRegister2: " + likeRegister2.total)
 
     //    Reset total counts
-    likeRegister.total = 0
+    likeRegister1.total = 0
+    likeRegister2.total = 0
 
     //    Print counts
-    echo(likeRegister.total)
+    echo("likeRegister1: " + likeRegister1.total)
+    echo("likeRegister2: " + likeRegister2.total)
 
-    for (like <- counts) {
-      like.apply()
+    for (count <- counts) {
+      count.apply()
     }
 
     //    Print counts
-    echo(likeRegister.total)
+    echo("likeRegister1: " + likeRegister1.total)
+    echo("likeRegister2: " + likeRegister2.total)
   }
 }

@@ -15,14 +15,14 @@ trait Register extends io.IO {
     total += toAdd
   }
 
-  def makeLike(register: Register, count: Int): () => Unit = {
+  def makeCount(register: Register, count: Int): () => Unit = {
     () => {
-      echo("Total counts: " + count)
+      echo("This count: " + count)
       register.addCount(count)
     }
   }
 
-  def executeLike(count: () => Unit): Unit = {
+  def executeCount(count: () => Unit): Unit = {
     counts = counts :+ count
     count()
   }
