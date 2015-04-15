@@ -12,6 +12,12 @@ case class User(firstname: String, middlename: String, lastname: String, credent
 
 object Demo extends io.IO with Register {
 
+  /**
+   * Complicated sort
+   * @param u1 User 1
+   * @param u2 User 2
+   * @return Boolean true if user 1 is equal to user 2
+   */
   def compSort(u1: User, u2: User): Boolean = {
     if (u1.firstname != u2.firstname)
       u1.firstname < u2.firstname
@@ -21,15 +27,38 @@ object Demo extends io.IO with Register {
       u1.credentials.username < u2.credentials.username
   }
 
+  /**
+   * Compare firstname
+   * @param u1 User 1
+   * @param u2 User 2
+   * @return Int 0 if they are the same
+   */
   def firstnameComparison(u1: User, u2: User): Int =
     u1.firstname.compareTo(u2.firstname)
 
+  /**
+   * Compare lastname
+   * @param u1 User 1
+   * @param u2 User 2
+   * @return Int 0 if they are the same
+   */
   def lastnameComparison(u1: User, u2: User): Int =
     u1.lastname.compareTo(u2.lastname)
 
+  /**
+   * Compare username
+   * @param u1 User 1
+   * @param u2 User 2
+   * @return Int 0 if they are the same
+   */
   def usernameComparison(u1: User, u2: User): Int =
     u1.credentials.username.compareTo(u2.credentials.username)
 
+  /**
+   * Make comparison
+   * @param comparisons 0 to many comparisons argument
+   * @return Int 0 if the users are the same
+   */
   def makeComparison(comparisons: ((User, User) => Int)*): (User, User) => Int = {
     (u1: User, u2: User) =>
       comparisons.map(cmp => cmp(u1, u2)).find(_ != 0).getOrElse(0)
