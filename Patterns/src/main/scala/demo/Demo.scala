@@ -2,6 +2,7 @@ package demo
 
 import builder.{Person, PersonCaseClass}
 import command.{LikeRegister, Register}
+import iterator.{Address, NPerson, NonIterator}
 
 /**
  * Created by kasonchan on 4/13/15.
@@ -10,7 +11,7 @@ case class Credentials(username: String, password: String)
 
 case class User(firstname: String, middlename: String, lastname: String, credentials: Credentials)
 
-object Demo extends io.IO with Register {
+object Demo extends io.IO with Register with NonIterator {
 
   /**
    * Complicated sort
@@ -63,6 +64,23 @@ object Demo extends io.IO with Register {
     (u1: User, u2: User) =>
       comparisons.map(cmp => cmp(u1, u2)).find(_ != 0).getOrElse(0)
   }
+
+  val isVowel = Set('a', 'e', 'i', 'o', 'u')
+
+  /**
+   * Returns the vowels in word
+   * @param word String
+   * @return
+   */
+  def vowelInWord(word: String): Set[Char] = word.filter(isVowel).toSet
+
+  /**
+   * Returns the product of the sequence
+   * @param sequence
+   * @return
+   */
+  def multipleSequence(sequence: Seq[Int]): Int =
+    if (sequence.isEmpty) 0 else sequence.reduce((acc, curr) => acc * curr)
 
   def main(args: Array[String]) {
     val u1 = User("Louis", "", "Chan", Credentials("louischan", "12345678"))
@@ -192,5 +210,26 @@ object Demo extends io.IO with Register {
     }
 
     echo("")
+
+    /**
+     * Replace iterator
+     * Iterator is an object that allows us to iterate over all the objects in the sequence
+     */
+    echo(vowelInWord("Kason Chan"))
+
+    // No iterating and no mutation using just higher order function
+    echo(multipleSequence(Vector(1, 2, 3, 4, 5)))
+
+    val p11 = NPerson("Kason Chan", Address(79407))
+    val p12 = NPerson("Bart Wong", Address(79400))
+    val p13 = NPerson("Cat Wu", Address(76201))
+    val p14 = NPerson("Desmond Ng", Address(79408))
+
+    val people = Vector(p11, p12, p13, p14)
+
+    val generatedGreetings = generateGreetings(people)
+
+    for (g <- generatedGreetings)
+      echo(g)
   }
 }
