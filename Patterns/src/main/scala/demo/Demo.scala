@@ -14,6 +14,9 @@ case class User(firstname: String, middlename: String, lastname: String, credent
 object Demo extends io.IO with Register with NonIterator {
 
   /**
+   * Replace functional interface with named functions
+   */
+  /**
    * Complicated sort
    * @param u1 User 1
    * @param u2 User 2
@@ -28,6 +31,9 @@ object Demo extends io.IO with Register with NonIterator {
       u1.credentials.username < u2.credentials.username
   }
 
+  /**
+   * Replace state-carrying function interface
+   */
   /**
    * Compare firstname
    * @param u1 User 1
@@ -65,6 +71,10 @@ object Demo extends io.IO with Register with NonIterator {
       comparisons.map(cmp => cmp(u1, u2)).find(_ != 0).getOrElse(0)
   }
 
+  /**
+   * Replace iterator
+   * Iterator is an object that allows us to iterate over all the objects in the sequence
+   */
   val isVowel = Set('a', 'e', 'i', 'o', 'u')
 
   /**
@@ -81,6 +91,46 @@ object Demo extends io.IO with Register with NonIterator {
    */
   def multipleSequence(sequence: Seq[Int]): Int =
     if (sequence.isEmpty) 0 else sequence.reduce((acc, curr) => acc * curr)
+
+  /**
+   * Replace template method
+   */
+  /**
+   * Make sum reporter
+   * @param sequenceOperation Sequence operation function
+   * @param print function to print
+   * @return
+   */
+  def makeSumReporter(sequenceOperation: Seq[Double] => Double, print: Double => Unit) =
+    (sums: Seq[Double]) => {
+      print(sequenceOperation(sums))
+    }
+
+  /**
+   * Sum the sequence
+   * @param sequence
+   * @return
+   */
+  def sumSequence(sequence: Seq[Double]): Double =
+    if (sequence.isEmpty) 0 else sequence.reduce((acc, curr) => acc + curr)
+  
+  def echoDouble(d: Double): Unit = println(d)
+
+  /**
+   * Encrypt text
+   * @param operation String operation function
+   * @param print print function
+   * @return
+   */
+  def makeProtection(operation: String => String, print: String => Unit) =
+    (texts: String) => {
+      print(operation(texts))
+    }
+
+  def protect(text: String): String =
+    text.map(t => (t.toInt + 3)).toString()
+
+  def echoString(s: String): Unit = println(s)
 
   def main(args: Array[String]) {
     val u1 = User("Louis", "", "Chan", Credentials("louischan", "12345678"))
@@ -196,6 +246,7 @@ object Demo extends io.IO with Register with NonIterator {
 
     echo("p9 equals p5? " + p9.equals(p5))
 
+    //    User of tuples
     val p10 = ("Kason", "Chan")
 
     echo(p10._1)
@@ -227,9 +278,29 @@ object Demo extends io.IO with Register with NonIterator {
 
     val people = Vector(p11, p12, p13, p14)
 
+    //    Monadic transformation
     val generatedGreetings = generateGreetings(people)
 
     for (g <- generatedGreetings)
       echo(g)
+
+    echo("")
+
+    /**
+     * Replace template method
+     */
+    val doubles = Vector(35.0, 32.5, 76.2, 90.3)
+
+    val r = makeSumReporter(sumSequence, echoDouble)
+
+    r(doubles)
+
+    val string = "This is a testing."
+
+    val s = makeProtection(protect, echoString)
+
+    s(string)
+
+    echo("")
   }
 }
