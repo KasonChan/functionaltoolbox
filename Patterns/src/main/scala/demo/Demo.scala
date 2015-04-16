@@ -3,6 +3,7 @@ package demo
 import builder.{Person, PersonCaseClass}
 import command.{LikeRegister, Register}
 import iterator.{Address, NPerson, NonIterator}
+import strategy.SPerson
 
 /**
  * Created by kasonchan on 4/13/15.
@@ -11,7 +12,7 @@ case class Credentials(username: String, password: String)
 
 case class User(firstname: String, middlename: String, lastname: String, credentials: Credentials)
 
-object Demo extends io.IO with Register with NonIterator {
+object Demo extends io.IO with Register with NonIterator with SPerson {
 
   /**
    * Replace functional interface with named functions
@@ -113,7 +114,7 @@ object Demo extends io.IO with Register with NonIterator {
    */
   def sumSequence(sequence: Seq[Double]): Double =
     if (sequence.isEmpty) 0 else sequence.reduce((acc, curr) => acc + curr)
-  
+
   def echoDouble(d: Double): Unit = println(d)
 
   /**
@@ -300,6 +301,28 @@ object Demo extends io.IO with Register with NonIterator {
     val s = makeProtection(protect, echoString)
 
     s(string)
+
+    echo("")
+
+    /**
+     * Replace strategy
+     */
+    val s1 = SPerson(Some("Kason"), None, Some("Chan"), Some('M'))
+    val s2 = SPerson(Some("Bernice"), None, Some("Chan"), Some('F'))
+    val s3 = SPerson(None, None, None, None)
+    val s4 = SPerson(Some("Michael"), Some("W."), Some("Smith"), Some('M'))
+
+    val ss = Vector(s1, s2, s3, s4)
+
+    val noMiddleNameCollector = personCollector(noMiddlename)
+
+    for (s <- ss)
+      echo(noMiddleNameCollector(s))
+
+    val fullnameValidCollector = personCollector(isFullnameValid)
+
+    for (s <- ss)
+      echo(fullnameValidCollector(s))
 
     echo("")
   }
