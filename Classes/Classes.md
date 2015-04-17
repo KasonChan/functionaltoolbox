@@ -1,5 +1,5 @@
 Classes
-=======
+-------
 
 - `abstract` modifier signifies that the class may have abstract members that do 
 not have an implementation.
@@ -29,7 +29,7 @@ constructor. It is a requirement which callers must fulfill.
 ```
 
 Pattern matching
-================
+----------------
 
 - `_*` specifies the last element in the sequence.
 
@@ -50,7 +50,7 @@ Pattern matching
     }
 ```
 
-- Patterns in `for` expressions: `for` expression prints only the `Some`s.
+- Pattern in `for` expression: `for` expression prints only the `Some`s.
 
 ```scala
     val sequence = Seq(Some(...), None, Some(...))
@@ -65,7 +65,7 @@ Pattern matching
     optionResult.getOrElse(defaultValue)
 ```
 
-- Deconstructs with pattern in variable definitons.
+- Deconstruct with patterns in variable definitons.
 
 ```scala
     val tuple = ("abc", 123)
