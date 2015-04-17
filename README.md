@@ -31,7 +31,7 @@ such as code snippets, basic project set up, templates, etc.
   - [`flatmap`](HigherOrderFunctions/Functions.md#flatmap)
   - [`foreach`](HigherOrderFunctions/Functions.md#foreach)
   - [`filter`](HigherOrderFunctions/Functions.md#filter) 
-  - [`partition`](HigherOrderFunctions/Functions.md#parition) 
+  - [`partition`](HigherOrderFunctions/Functions.md#partition) 
   - [`takeWhile`](HigherOrderFunctions/Functions.md#takewhile) 
   - [`dropWhile`](HigherOrderFunctions/Functions.md#dropwhile) 
   - [`span`](HigherOrderFunctions/Functions.md#span) 
