@@ -9,12 +9,12 @@ such as code snippets, basic project set up, templates, etc.
 ## Table of Contents ##
 
 - [Classes](Classes/Classes.md)
-  - `abstract` modifier
-  - `sealed` modifier
-  - `extends` keyword
-  - `require` keyword
-  - `override` modifier
-  - `toString` function
+  - [`abstract` modifier](Classes/Classes.md#abstract-sealed-and-extends)
+  - [`sealed` modifier](Classes/Classes.md#abstract-sealed-and-extends)
+  - [`extends` keyword](Classes/Classes.md#abstract-sealed-and-extends)
+  - [`require` keyword](Classes/Classes.md#require-override-and-tostring)
+  - [`override` modifier](Classes/Classes.md#require-override-and-tostring)
+  - [`toString` function](Classes/Classes.md#require-override-and-tostring)
 - [Pattern matching](Classes/Classes.md)
   - ```_*```
   - Variable binding

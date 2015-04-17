@@ -33,6 +33,8 @@ constructor. It is a requirement which callers must fulfill.
 
 ## Pattern matching
 
+### Specify last element in sequence
+
 - `_*` specifies the last element in the sequence.
 
 ```scala
@@ -41,6 +43,8 @@ constructor. It is a requirement which callers must fulfill.
       ...
     }
 ```
+
+### Variable binding
 
 - Variable binding: variable name, an at sign `@` and then the pattern. 
 `pattern` can be used as `a`.
@@ -52,6 +56,8 @@ constructor. It is a requirement which callers must fulfill.
     }
 ```
 
+### In `for` expression
+
 - Pattern in `for` expression: `for` expression prints only the `Some`s.
 
 ```scala
@@ -60,12 +66,16 @@ constructor. It is a requirement which callers must fulfill.
       print(item)
 ```
 
+### `getOrElse` for `Option`
+
 - Use `getOrElse` for `Option` result: If `optionResult` return `None`, 
 `defaultValue` will be used.
 
 ```scala
     optionResult.getOrElse(defaultValue)
 ```
+
+### Deconstruct pattern
 
 - Deconstruct with patterns in variable definitons.
 
@@ -75,6 +85,8 @@ constructor. It is a requirement which callers must fulfill.
     print(string)
     print(integer)
 ```
+
+### `@unchecked`
 
 - `@unchecked` annotation suppresses exhaustive checking.
 
