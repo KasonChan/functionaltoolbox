@@ -1,6 +1,8 @@
 Classes
 -------
 
+### `abstract`, `sealed` and `extends`
+
 - `abstract` modifier signifies that the class may have abstract members that do 
 not have an implementation.
 - `sealed` trait/class can not have any new subclasses added.
@@ -13,6 +15,8 @@ not have an implementation.
     sealed abstract class Superclass
     case class Subclass(...) extends Superclass
 ```
+
+### `require`, `override` and `toString`
 
 - `require` signals a precondition constraint on values passed into method or 
 constructor. It is a requirement which callers must fulfill.
