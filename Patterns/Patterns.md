@@ -3,8 +3,8 @@
 ### Replace functional interface
 
 Functional interface allows us to call an object as if it were a function. It is
-also known as *functional object*, *functoid* and *functor*. This intent to 
-encapsulate a bit of program logic so that it can be passed around, stored in 
+also known as **functional object**, **functoid** and **functor**. This intent 
+to encapsulate a bit of program logic so that it can be passed around, stored in 
 data structures and generally treated like any other first-class construct. 
 
 #### Anonymous function
@@ -34,7 +34,6 @@ It can be replaced using anonymous function.
         ... // Complicated logic
       }
     }
-})
 ```
 
 It can be replaced using named function.
@@ -52,7 +51,7 @@ functional interface when just existing function types will do.
 ### Replace state-carrying functional interface
 
 Functional interface implementations that need state using a construct called 
-*closure*. *Closure* is a construct that wraps up a function along with the 
+**closure**. **Closure** is a construct that wraps up a function along with the 
 state available to it when it was created.
 
 ```java
@@ -162,8 +161,8 @@ bunch of getters and setters.
     }
 ```
 
-This builder pattern can be replaced by 3 different ways - *immutable classes*, 
-*case classes* and *tuples* in `Scala`.
+This builder pattern can be replaced by 3 different ways - **immutable classes**, 
+**case classes** and **tuples** in `Scala`.
 
 #### Immutable classes
 
@@ -208,17 +207,18 @@ Reference them by position to get values back or use pattern matching.
     }
 ```
 
-### Replace Iterator
+### Replace iterator
 
 Iterator is an object that allows us to iterator over all the objects in a 
 sequence. It is intent to iterate throught the elements of a sequence in order
-without indexing them. It is also known as *cursor* and *enumerator*. The 
+without indexing them. It is also known as **cursor** and **enumerator**. The 
 following code snippets show filtering, prepending and accumulating a sequence.
 
 #### Filtering
 
 ```java
     /**
+     * Java
      * Filter some type of element out of sequence
      */
     public static Set<T1> function(T2 argument) {
@@ -233,6 +233,7 @@ following code snippets show filtering, prepending and accumulating a sequence.
 ```
 
 ```scala
+    // Scala
     val function = Set(...: T1)
 
     def function(argument: T2) = argument.filter(function).toSet
@@ -242,6 +243,7 @@ following code snippets show filtering, prepending and accumulating a sequence.
 
 ```java
     /**
+     * Java
      * Prepend a list of arguments with something
      */
     public static List<T> prepend(List<T> arguments) {
@@ -254,6 +256,7 @@ following code snippets show filtering, prepending and accumulating a sequence.
 ```
 
 ```scala
+    // Scala
     def prepend(arguments: Seq[T]) = 
       arguments.map(argument => Something + argument)
 
@@ -264,6 +267,7 @@ following code snippets show filtering, prepending and accumulating a sequence.
 
 ```java
     /**
+     * Java
      * Accumulate a sequence
      */
     public static T accumulate(List<T> sequence) {
@@ -276,6 +280,7 @@ following code snippets show filtering, prepending and accumulating a sequence.
 ```
 
 ```scala
+     // Scala
      def accumulate(sequence: Seq[T]) = 
        if (sequence.isEmpty) T 
        else sequence.reduce((accumulator, element) => accumulator + element)
@@ -316,17 +321,17 @@ def makeOperation(subOperation1: () => Unit,
                   ...)
 ```
 
-Instead of using subtypes to implement specific suboperations, use *functional 
-composition* and higher-order functions.
-In OOP, use *replace dependency injection* to inject suboperations into a class,
-rather than using *template method* and subclassing. This helps prevent code 
-duplication. *Composition* does better job of making an API explicit.
+Instead of using subtypes to implement specific suboperations, use **functional 
+composition** and higher-order functions. In OOP, use 
+**replace dependency injection** to inject suboperations into a class,
+rather than using **template method** and subclassing. This helps prevent code 
+duplication. **Composition** does better job of making an API explicit.
 
-### Replace Strategy
+### Replace strategy
 
 Strategy consists of an interface that represents some algorithm such as 
 validation logic or sorting routine, implementations of interface, and the 
-clients that use the objects. It is also known as *policy*. Its intent to 
+clients that use the objects. It is also known as **policy**. Its intent to 
 define an algorithm in abstract terms so it can be implemented in several 
 different ways, and to allow it to be injected into clients so it can be used 
 across several different clients.
@@ -352,6 +357,48 @@ across several different clients.
     newValidator(toBeValidated)
 ```
 
-Strategy and template method server smiliar ends. Strategy uses composition and 
-template method use inheritance, but we replace both patterns with ones based on
-*functional composition*.
+Strategy and template method server smiliar ends. **Strategy** uses 
+**composition** and **template method** use **inheritance**, but we replace both
+patterns with ones based on **functional composition**.
+
+### Replace null object
+
+This intent to avoid scattering null checks throughtout the code by 
+encapsulating the action taken for null references into a surrogate null object.
+2 main benefits are (1) avoid scattering null checks which keeps the code clean
+and easier to read (2) centralize logic that deals with handling the absence of 
+a value.
+
+```java
+    if (null == object) {
+      // Default null handling behavior
+    } else {
+     object.method()
+    }
+```
+
+Use container types `Option` or `Either`. `getOrElse` method is called with 
+single argument, a default value. When called on an instance of `Some`, carried
+value is returned; otherwise, default value is returned when called on `None`.
+
+```scala
+    def some = Some(...)
+    def none = None
+
+    some.getOrElse("Default value") // ...
+    none.getOrElse("Default value") // Default value
+    
+    def map = Map(1 -> "A", 2 -> "B")
+    
+    map.getOrElse(3, "Default value") // Default value
+```
+
+If any of generators produces a `None`, then the value of the entire expression
+is a `None`.
+
+```scala
+    val bSome = Some("b")
+    val none = None
+
+    for (b <- bSome; n <- none) yield (b, n) // None
+```

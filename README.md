@@ -45,9 +45,10 @@ such as code snippets, basic project set up, templates, etc.
     - Replace state-carrying functional interface
     - Replace command
     - Replace builder for immutable object
-    - Replace Iterator
+    - Replace iterator
     - Replace template
-    - Replace Strategy
+    - Replace strategy
+    - Replace null object
 - [Swing](Swing/Swing.md)
 
 [References](References/References.md)

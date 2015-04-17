@@ -133,6 +133,26 @@ object Demo extends io.IO with Register with NonIterator with SPerson {
 
   def echoString(s: String): Unit = println(s)
 
+  /**
+   * Replace null object
+   */
+  def some = Some("foo")
+
+  def none = None
+
+  def map = Map(1 -> "A", 2 -> "B")
+
+  case class APerson(firstname: String = "Peter", lastname: String = "Parker")
+
+  val nullPerson = APerson()
+
+  def fetchAPerson(people: Map[Int, APerson], id: Int) =
+    people.getOrElse(id, nullPerson)
+
+  /**
+   * Main
+   * @param args String array
+   */
   def main(args: Array[String]) {
     val u1 = User("Louis", "", "Chan", Credentials("louischan", "12345678"))
     val u2 = User("Bernice", "", "Chan", Credentials("bernicechan", "12345678"))
@@ -323,6 +343,30 @@ object Demo extends io.IO with Register with NonIterator with SPerson {
 
     for (s <- ss)
       echo(fullnameValidCollector(s))
+
+    echo("")
+
+    /**
+     * Replace null object
+     */
+    echo(some.getOrElse("default"))
+    echo(none.getOrElse("default"))
+
+    echo(map.getOrElse(3, "default"))
+
+    val mary = APerson("Mary", "Jane")
+    val jack = APerson("Jack", "Miller")
+    val somePeople = Map(1 -> mary, 2 -> jack)
+
+    echo(fetchAPerson(somePeople, 3))
+
+    val aV = Vector("a")
+    val bS = Some("b")
+    val cS = Some("c")
+    val nN = None
+
+    val result = for (b <- bS; n <- nN) yield (b, n)
+    echo(result)
 
     echo("")
   }
