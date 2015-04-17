@@ -51,7 +51,7 @@ object Demos extends IO {
      */
     l1 match {
       //    _* specifies last element of the pattern
-      case List(1, _*) => echo("Found it")
+      case Seq(1, _*) => echo("Found it")
       case _ =>
     }
 
