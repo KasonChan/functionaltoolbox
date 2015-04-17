@@ -1,5 +1,4 @@
-Collections
------------
+## Collections
 
 - Create a list of integer
 
@@ -21,8 +20,7 @@ by `==` will be contained in the set at any one time.
     Set(...)
 ```
 
-Higher-order functions
-----------------------
+## Higher-order functions
 
 - `map` takes a function and a sequence and applies that function to every element in the sequence, producing a new sequence
 
@@ -57,7 +55,7 @@ Higher-order functions
     sequence partition (predicate)
 ```
 
-- `TakeWhile` takes a predicate as their right operand, takes the longest prefix of list that satisfy predicate.
+- `takeWhile` takes a predicate as their right operand, takes the longest prefix of list that satisfy predicate.
 
 ```scala
     sequence takeWhile predicate

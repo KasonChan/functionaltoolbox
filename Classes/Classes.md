@@ -1,5 +1,4 @@
-Classes
--------
+## Classes
 
 ### `abstract`, `sealed` and `extends`
 
@@ -32,8 +31,7 @@ constructor. It is a requirement which callers must fulfill.
     }
 ```
 
-Pattern matching
-----------------
+## Pattern matching
 
 - `_*` specifies the last element in the sequence.
 

@@ -1,5 +1,4 @@
-Functional toolbox
-==================
+# Functional toolbox
 
 The repository is dedicated for recording what I learnt in functional 
 programming in Scala with 
@@ -17,7 +16,7 @@ such as code snippets, basic project set up, templates, etc.
   - `override` modifier
   - `toString` function
 - [Pattern matching](Classes/Classes.md)
-  - ```scala _*```
+  - ```_*```
   - Variable binding
   - Pattern in `for` expression
   - User `getOrElse` for `Option` result
@@ -33,12 +32,23 @@ such as code snippets, basic project set up, templates, etc.
   - `foreach` 
   - `filter` 
   - `partition` 
-  - `TakeWhile` 
+  - `takeWhile` 
   - `dropWhile` 
   - `span` 
   - `find` 
   - `zip` 
   - `unzip` 
   - `fold` 
+- [Patterns](Patterns/Patterns.md)
+  - Replace object-oriented patterns
+    - Replace functional interface
+    - Replace state-carrying functional interface
+    - Replace command
+    - Replace builder for immutable object
+    - Replace Iterator
+    - Replace template
+    - Replace Strategy
 - [Swing](Swing/Swing.md)
+
+[References](References/References.md)
 
