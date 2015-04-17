@@ -66,7 +66,7 @@ constructor. It is a requirement which callers must fulfill.
       print(item)
 ```
 
-### `getOrElse` for `Option`
+### Use `getOrElse` for `Option`
 
 - Use `getOrElse` for `Option` result: If `optionResult` return `None`, 
 `defaultValue` will be used.
@@ -86,7 +86,7 @@ constructor. It is a requirement which callers must fulfill.
     print(integer)
 ```
 
-### `@unchecked`
+### `@unchecked` annotation
 
 - `@unchecked` annotation suppresses exhaustive checking.
 

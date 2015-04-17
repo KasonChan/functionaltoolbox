@@ -16,39 +16,39 @@ such as code snippets, basic project set up, templates, etc.
   - [`override` modifier](Classes/Classes.md#require-override-and-tostring)
   - [`toString` function](Classes/Classes.md#require-override-and-tostring)
 - [Pattern matching](Classes/Classes.md)
-  - ```_*```
-  - Variable binding
-  - Pattern in `for` expression
-  - User `getOrElse` for `Option` result
-  - Deconstruct with patterns in variable definitions
-  - `@unchecked` annotation 
-- [Collections](HigherOrderFunctions/Functions.md)
-  - Create a list of integer
-  - Create a map collection
-  - Create a set collection
-- [Higher-order functions](HigherOrderFunctions/Functions.md)
-  - `map`
-  - `flatmap`
-  - `foreach` 
-  - `filter` 
-  - `partition` 
-  - `takeWhile` 
-  - `dropWhile` 
-  - `span` 
-  - `find` 
-  - `zip` 
-  - `unzip` 
-  - `fold` 
+  - [```_*```](Classes/Classes.md#specify-last-element-in-sequence)
+  - [Variable binding](Classes/Classes.md#variable-binding)
+  - [Pattern in `for` expression](Classes/Classes.md#in-for-expression)
+  - [User `getOrElse` for `Option` result](Classes/Classes.md#use-getorelse-for-option)
+  - [Deconstruct with patterns in variable definitions](Classes/Classes.md#deconstruct-pattern)
+  - [`@unchecked` annotation](Classes/Classes.md#unchecked-annotation)
+- [Collections](HigherOrderFunctions/Functions.md#collections)
+  - [Create a list of integer](HigherOrderFunctions/Functions.md#collections)
+  - [Create a map collection](HigherOrderFunctions/Functions.md#collections)
+  - [Create a set collection](HigherOrderFunctions/Functions.md#collections)
+- [Higher-order functions](HigherOrderFunctions/Functions.md#higher-order-functions)
+  - [`map`](HigherOrderFunctions/Functions.md#map)
+  - [`flatmap`](HigherOrderFunctions/Functions.md#flatmap)
+  - [`foreach`](HigherOrderFunctions/Functions.md#foreach)
+  - [`filter`](HigherOrderFunctions/Functions.md#filter) 
+  - [`partition`](HigherOrderFunctions/Functions.md#parition) 
+  - [`takeWhile`](HigherOrderFunctions/Functions.md#takewhile) 
+  - [`dropWhile`](HigherOrderFunctions/Functions.md#dropwhile) 
+  - [`span`](HigherOrderFunctions/Functions.md#span) 
+  - [`find`](HigherOrderFunctions/Functions.md#find) 
+  - [`zip`](HigherOrderFunctions/Functions.md#zip) 
+  - [`unzip`](HigherOrderFunctions/Functions.md#unzip) 
+  - [`fold`](HigherOrderFunctions/Functions.md#fold) 
 - [Patterns](Patterns/Patterns.md)
-  - Replace object-oriented patterns
-    - Replace functional interface
-    - Replace state-carrying functional interface
-    - Replace command
-    - Replace builder for immutable object
-    - Replace iterator
-    - Replace template
-    - Replace strategy
-    - Replace null object
+  - [Replace object-oriented patterns](Patterns/Patterns.md#replace-object-oriented-patterns)
+    - [Replace functional interface](Patterns/Patterns.md#replace-functional-interface)
+    - [Replace state-carrying functional interface](Patterns/Patterns.md#replace-state-carrying-functional-interface)
+    - [Replace command](Patterns/Patterns.md#replace-command)
+    - [Replace builder for immutable object](Patterns/Patterns.md#replace-builder-for-immutable-object)
+    - [Replace iterator](Patterns/Patterns.md#replace-iterator)
+    - [Replace template](Patterns/Patterns.md#replace-template)
+    - [Replace strategy](Patterns/Patterns.md#replace-strategy)
+    - [Replace null object](Patterns/Patterns.md#replace-null-object)
 - [Swing](Swing/Swing.md)
 
 [References](References/References.md)

@@ -22,6 +22,8 @@ by `==` will be contained in the set at any one time.
 
 ## Higher-order functions
 
+### `map`
+
 - `map` takes a function and a sequence and applies that function to every element in the sequence, producing a new sequence
 
 ```scala
@@ -30,17 +32,23 @@ by `==` will be contained in the set at any one time.
     sequence map { case(key, value) => function(value)}
 ```
 
+### `flatmap`
+
 - `flatmap` takes a function returning a list of elements as its right operand, applies the function to each list element and returns the concatenation of all function results. 
 
 ```scala
     sequence flatmap (_ operation)
 ```
 
+### `foreach`
+
 - `foreach` takes a procedure as right operand, applies to each list element.
 
 ```scala
     sequence foreach (procedure)
 ```
+
+### `filter`
 
 - `filter` takes a predicate and a sequence, and returns the sequence of elements that satisfy that predicate. Predicates returns `true` or `false`.
 
@@ -49,11 +57,15 @@ by `==` will be contained in the set at any one time.
     sequence filter { case(key, value) => predicate(value) }
 ```
 
+### `partition`
+
 - `partition` takes a predicate and a sequence, and returns the sequence of elements that satisfy that predicate.
 
 ```scala
     sequence partition (predicate)
 ```
+
+### `takeWhile`
 
 - `takeWhile` takes a predicate as their right operand, takes the longest prefix of list that satisfy predicate.
 
@@ -61,11 +73,15 @@ by `==` will be contained in the set at any one time.
     sequence takeWhile predicate
 ```
 
+### `dropWhile`
+
 - `dropWhile` takes a predicate as their right operand, removes the longest prefix from list that satisfy predicate.
 
 ```scala
     sequence dropWhile predicate
 ```
+
+### `span`
 
 - `span` combines takeWhile and dropWhile in one operation and it avoids traversing the list twice.
 
@@ -73,11 +89,15 @@ by `==` will be contained in the set at any one time.
     sequence span predicate
 ```
 
+### `find`
+
 - `find` takes a predicate and a sequence, and returns the first element satisfying a given predicate. Return Some(x) if predicate is true, otherwise return None.
 
 ```scala
     sequence find (predicate)
 ```
+
+### `zip`
 
 - `zip` takes two sequences and forms a list of pairs.
 
@@ -88,11 +108,15 @@ by `==` will be contained in the set at any one time.
     (sequence, sequence) zipped map (function)
 ```
 
+### `unzip`
+
 - `unzip` take any list of tuples and changes back to a tuple of lists.
 
 ```scala
     (tuple sequence) unzip
 ```
+
+### `fold`
 
 - `fold` takes a binary function, a starting value called accumulator and a sequence to fold up.
 
