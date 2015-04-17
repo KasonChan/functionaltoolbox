@@ -17,7 +17,7 @@ such as code snippets, basic project set up, templates, etc.
   - `override` modifier
   - `toString` function
 - [Pattern matching](Classes/Classes.md)
-  - ```_*`
+  - ```scala _*```
   - Variable binding
   - Pattern in `for` expression
   - User `getOrElse` for `Option` result

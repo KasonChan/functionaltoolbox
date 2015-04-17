@@ -1,6 +1,3 @@
-Higher-order functions
-======================
-
 Collections
 -----------
 
@@ -50,8 +47,8 @@ Higher-order functions
 - `filter` takes a predicate and a sequence, and returns the sequence of elements that satisfy that predicate. Predicates returns `true` or `false`.
 
 ```scala
-     sequence filter (predicate)
-     sequence filter { case(key, value) => predicate(value) }
+    sequence filter (predicate)
+    sequence filter { case(key, value) => predicate(value) }
 ```
 
 - `partition` takes a predicate and a sequence, and returns the sequence of elements that satisfy that predicate.
