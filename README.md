@@ -10,14 +10,14 @@ such as code snippets, basic project set up, templates, etc.
 ## Table of Contents ##
 
 - [Classes](Classes/Classes.md)
-  - [`abstract` modifier](Classes/Classes.md#abstract-sealed-extends)
-  - [`sealed` modifier](Classes/Classes.md#abstract-sealed-extends)
-  - [`extends` keyword](Classes/Classes.md#abstract-sealed-extends)
-  - [`require` keyword](Classes/Classes.md#require-override-tostring)
-  - [`override` modifier](Classes/Classes.md#require-override-tostring)
-  - [`toString` function](Classes/Classes.md#require-override-tostring)
-- [Pattern matching](Classes/Classes.md#require-override-tostring)
-  - ```_*```
+  - `abstract` modifier
+  - `sealed` modifier
+  - `extends` keyword
+  - `require` keyword
+  - `override` modifier
+  - `toString` function
+- [Pattern matching](Classes/Classes.md)
+  - ```_*`
   - Variable binding
   - Pattern in `for` expression
   - User `getOrElse` for `Option` result
