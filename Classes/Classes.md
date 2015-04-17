@@ -10,8 +10,8 @@ not have an implementation.
   - `Subclass` becomes a subtype of `Superclass`.
 
 ```scala
-  sealed abstract class Superclass
-  case class Subclass(...) extends Superclass
+    sealed abstract class Superclass
+    case class Subclass(...) extends Superclass
 ```
 
 - `require` signals a precondition constraint on values passed into method or 
@@ -21,11 +21,11 @@ constructor. It is a requirement which callers must fulfill.
 `java.lang.Object`. The result of `toString` helps us to give info in debugging.  
 
 ```scala
-  class classname(p: Any) {
-    require(condition of p)
-    ...
-    override def toString = ...
-  }
+    class classname(p: Any) {
+      require(condition of p)
+      ...
+      override def toString = ...
+    }
 ```
 
 Pattern matching
@@ -34,49 +34,50 @@ Pattern matching
 - `_*` specifies the last element in the sequence.
 
 ```scala
-  sequence match {
-    case Seq(1, _*) => echo("Found it")
-    ...
-  }
+    sequence match {
+      case Seq(1, _*) => echo("Found it")
+      ...
+    }
 ```
 
 - Variable binding: variable name, an at sign `@` and then the pattern. 
 `pattern` can be used as `a`.
 
 ```scala
-  selector match {
-    case alternative(..., a @ pattern) => a
-    ...
+    selector match {
+      case alternative(..., a @ pattern) => a
+      ...
+    }
 ```
 
 - Patterns in `for` expressions: `for` expression prints only the `Some`s.
 
 ```scala
-  val sequence = Seq(Some(...), None, Some(...))
-  for(item <- sequence)
-    print(item)
+    val sequence = Seq(Some(...), None, Some(...))
+    for(item <- sequence)
+      print(item)
 ```
 
 - Use `getOrElse` for `Option` result: If `optionResult` return `None`, 
 `defaultValue` will be used.
 
 ```scala
-  optionResult.getOrElse(defaultValue)
+    optionResult.getOrElse(defaultValue)
 ```
 
 - Deconstructs with pattern in variable definitons.
 
 ```scala
-  val tuple = ("abc", 123)
-  val (string, integer) = tuple  
-  print(string)
-  print(integer)
+    val tuple = ("abc", 123)
+    val (string, integer) = tuple  
+    print(string)
+    print(integer)
 ```
 
 - `@unchecked` annotation suppresses exhaustive checking.
 
 ```scala
-  ... (selector: @unchecked) match {
-    ...
-  }
+    ... (selector: @unchecked) match {
+      ...
+    }
 ```
