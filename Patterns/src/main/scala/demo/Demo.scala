@@ -2,6 +2,7 @@ package demo
 
 import builder.{Person, PersonCaseClass}
 import command.{LikeRegister, Register}
+import decorator.Decorator
 import iterator.{Address, NPerson, NonIterator}
 import strategy.SPerson
 
@@ -12,7 +13,7 @@ case class Credentials(username: String, password: String)
 
 case class User(firstname: String, middlename: String, lastname: String, credentials: Credentials)
 
-object Demo extends io.IO with Register with NonIterator with SPerson {
+object Demo extends io.IO with Register with NonIterator with SPerson with Decorator {
 
   /**
    * Replace functional interface with named functions
@@ -367,6 +368,14 @@ object Demo extends io.IO with Register with NonIterator with SPerson {
 
     val result = for (b <- bS; n <- nN) yield (b, n)
     echo(result)
+
+    echo("")
+
+    /**
+     * Replace decorator
+     */
+    val loggedAdd = loggingAdd(2, 3)
+    echo(loggedAdd)
 
     echo("")
   }

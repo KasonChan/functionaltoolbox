@@ -402,3 +402,29 @@ is a `None`.
 
     for (b <- bSome; n <- none) yield (b, n) // None
 ```
+
+### Replace decorator
+
+Decorator is used when we need to add some behavior to an existing class and we
+can not change the existing class. Its intent is to add bechvior to an 
+individual object rather than to an entire class of objects. Decorator uses a
+combination of inheritance and composition. It is known as **wrapper**.
+
+Functional replacement is to create higher-order function that takes in the 
+existing function and returns a new, wrapped function.
+
+```scala
+    def add(a: Int, b: Int) = a + b
+    
+    // Wrapper
+    def makeLogger(operation: (Int, Int) => Int) = 
+      (a: Int, b: Int) => {
+        val result = operation(a, b)
+        println("Result is " + result)
+        result
+    }
+    
+    val loggingAdd = makeLogger(add)
+    
+    loggingAdd(2, 3) // Result is 5
+```

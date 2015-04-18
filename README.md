@@ -49,6 +49,7 @@ such as code snippets, basic project set up, templates, etc.
     - [Replace template](Patterns/Patterns.md#replace-template)
     - [Replace strategy](Patterns/Patterns.md#replace-strategy)
     - [Replace null object](Patterns/Patterns.md#replace-null-object)
+    - [Replace decorator](Patterns/Patterns.md#replace-decorator)
 - [Swing](Swing/Swing.md)
 
 [References](References/References.md)
