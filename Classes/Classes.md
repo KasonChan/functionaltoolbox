@@ -30,6 +30,7 @@ constructor. It is a requirement which callers must fulfill.
       override def toString = ...
     }
 ```
+--------------------------------------------------------------------------------
 
 ## Pattern matching
 

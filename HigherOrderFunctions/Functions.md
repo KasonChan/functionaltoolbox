@@ -20,6 +20,8 @@ by `==` will be contained in the set at any one time.
     Set(...)
 ```
 
+--------------------------------------------------------------------------------
+
 ## Higher-order functions
 
 ### `map`
