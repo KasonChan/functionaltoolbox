@@ -50,6 +50,7 @@ such as code snippets, basic project set up, templates, etc.
     - [Replace strategy](Patterns/Patterns.md#replace-strategy)
     - [Replace null object](Patterns/Patterns.md#replace-null-object)
     - [Replace decorator](Patterns/Patterns.md#replace-decorator)
+    - [Replace visitor](Patterns/Patterns.md#replace-visitor)
 - [Swing](Swing/Swing.md)
 
 [References](References/References.md)

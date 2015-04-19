@@ -428,3 +428,45 @@ existing function and returns a new, wrapped function.
     
     loggingAdd(2, 3) // Result is 5
 ```
+
+### Replace visitor
+
+Its intent to encapsulate an action to be performed on a data structure in a way
+that allows the additon of new operations to the data structure without having 
+to modify it. It need to be done without recompiling the original source. It is
+known as the *expression problem*.
+
+The norm is that it is easy to add a new operation on some data type by writing
+a new function that operators on it, but it is difficult to add new data types
+to an existing operation. There are two methods of replacing visitor: 
+1. Extend the operations in an existing library that use Scala's **implicit 
+conversion** system. This allows us to add new operations to existing libraries.
+2. Take advantage of Scala's **mix-in inheritance** and `trait`. This allows
+us to add both new operations and new implementation to a data type.
+
+```scala
+    trait Person {
+      def fullname: String
+      def firstname: String
+      def lastname: String
+      def houseNum: Int
+      def street: String
+    }
+    
+    // Use mix-in inheritance and trait
+    class SimplePerson(val firstname: String, val lastname: String, 
+    val houseNum: Int, val street: String) extends Person {
+      def fullname = firstname + " " + lastname
+    }
+    
+    val simplePerson = new SimplePerson("Kason", "Chan", 1234, "Real. St.")
+    
+    simplePerson.fullName // Kason Chan
+    
+    // Use implicit conversion
+    implicit class ExtendedPerson(person: Person) {
+      def fullAddress = person.houseNum + " " + person.street
+    }
+    
+    simplePerson.fullAddress // 1234 Real. St.
+```

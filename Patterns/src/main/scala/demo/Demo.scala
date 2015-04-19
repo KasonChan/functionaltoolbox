@@ -5,6 +5,7 @@ import command.{LikeRegister, Register}
 import decorator.Decorator
 import iterator.{Address, NPerson, NonIterator}
 import strategy.SPerson
+import visitor.Visitor
 
 /**
  * Created by kasonchan on 4/13/15.
@@ -13,7 +14,7 @@ case class Credentials(username: String, password: String)
 
 case class User(firstname: String, middlename: String, lastname: String, credentials: Credentials)
 
-object Demo extends io.IO with Register with NonIterator with SPerson with Decorator {
+object Demo extends io.IO with Register with NonIterator with SPerson with Decorator with Visitor {
 
   /**
    * Replace functional interface with named functions
@@ -378,5 +379,14 @@ object Demo extends io.IO with Register with NonIterator with SPerson with Decor
     echo(loggedAdd)
 
     echo("")
+
+    /**
+     * Replace visitor
+     */
+    val simplePerson = new SimplePerson("Kason", "Chan", 1234, "Real. St.")
+
+    echo(simplePerson.fullname) // Kason Chan
+
+    echo(simplePerson.fullAddress) // 1234 Real. St.
   }
 }
