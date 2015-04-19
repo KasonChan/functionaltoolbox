@@ -194,7 +194,7 @@ object Demo extends io.IO with Register with NonIterator with SPerson with Decor
     val complicatedComparison = makeComparison(firstnameComparison, lastnameComparison, usernameComparison)
 
     val compareU1U2 = complicatedComparison(u1, u5)
-    echo(compareU1U2)
+    echo(compareU1U2) // 12
 
     echo("")
 
@@ -216,24 +216,24 @@ object Demo extends io.IO with Register with NonIterator with SPerson with Decor
     executeCount(thirdLike)
 
     //    Print counts
-    echo("likeRegister1: " + likeRegister1.total)
-    echo("likeRegister2: " + likeRegister2.total)
+    echo("likeRegister1: " + likeRegister1.total) // likeRegister1: 4
+    echo("likeRegister2: " + likeRegister2.total) // likeRegister2: 2
 
     //    Reset total counts
     likeRegister1.total = 0
     likeRegister2.total = 0
 
     //    Print counts
-    echo("likeRegister1: " + likeRegister1.total)
-    echo("likeRegister2: " + likeRegister2.total)
+    echo("likeRegister1: " + likeRegister1.total) // likeRegister1: 0
+    echo("likeRegister2: " + likeRegister2.total) // likeRegister2: 0
 
     for (count <- counts) {
       count.apply()
     }
 
     //    Print counts
-    echo("likeRegister1: " + likeRegister1.total)
-    echo("likeRegister2: " + likeRegister2.total)
+    echo("likeRegister1: " + likeRegister1.total) // likeRegister1: 4
+    echo("likeRegister2: " + likeRegister2.total) // likeRegister2: 2
 
     echo("")
 
@@ -254,32 +254,32 @@ object Demo extends io.IO with Register with NonIterator with SPerson with Decor
     val p7 = PersonCaseClass("Doris", "I.", "Chan", "Female")
     val p8 = PersonCaseClass(firstname = "Kelvin", lastname = "Lei", sex = "Male")
 
-    echo(p4)
-    echo(p5)
-    echo(p6)
-    echo(p7)
+    echo(p4) // PersonCaseClass(Kelvin,,Lei,Male)
+    echo(p5) // PersonCaseClass(Kelvin,S.,Lei,Male)
+    echo(p6) // PersonCaseClass(Kelvin,,Lei,Male)
+    echo(p7) // PersonCaseClass(Doris,I.,Chan,Female)
 
-    echo("p4 equals p5? " + p4.equals(p5))
-    echo("p4 equals p6? " + p4.equals(p6))
-    echo("p4 equals p8? " + p4.equals(p8))
+    echo("p4 equals p5? " + p4.equals(p5)) // p4 equals p5? false
+    echo("p4 equals p6? " + p4.equals(p6)) // p4 equals p6? true
+    echo("p4 equals p8? " + p4.equals(p8)) // p4 equals p8? true
 
     val p9 = p4.copy(middlename = "S.")
 
-    echo(p9)
+    echo(p9) // PersonCaseClass(Kelvin,S.,Lei,Male)
 
-    echo("p9 equals p5? " + p9.equals(p5))
+    echo("p9 equals p5? " + p9.equals(p5)) // p9 equals p5? true
 
     //    User of tuples
     val p10 = ("Kason", "Chan")
 
-    echo(p10._1)
-    echo(p10._2)
+    echo(p10._1) // Kason
+    echo(p10._2) // Chan
 
     //    Pattern matching
     p10 match {
       case (firstname, lastname) => {
-        echo("Firstname: " + firstname)
-        echo("Lastname: " + lastname)
+        echo("Firstname: " + firstname) // Firstname: Kason
+        echo("Lastname: " + lastname) // Lastname: Chan
       }
     }
 
@@ -289,10 +289,10 @@ object Demo extends io.IO with Register with NonIterator with SPerson with Decor
      * Replace iterator
      * Iterator is an object that allows us to iterate over all the objects in the sequence
      */
-    echo(vowelInWord("Kason Chan"))
+    echo(vowelInWord("Kason Chan")) // Set(a, o)
 
     // No iterating and no mutation using just higher order function
-    echo(multipleSequence(Vector(1, 2, 3, 4, 5)))
+    echo(multipleSequence(Vector(1, 2, 3, 4, 5))) // 120
 
     val p11 = NPerson("Kason Chan", Address(79407))
     val p12 = NPerson("Bart Wong", Address(79400))
@@ -305,7 +305,8 @@ object Demo extends io.IO with Register with NonIterator with SPerson with Decor
     val generatedGreetings = generateGreetings(people)
 
     for (g <- generatedGreetings)
-      echo(g)
+      echo(g) // Hello, Kason Chan, and welcome to Lambda Bar.
+    // Hello, Desmond Ng, and welcome to Lambda Bar.
 
     echo("")
 
@@ -316,11 +317,12 @@ object Demo extends io.IO with Register with NonIterator with SPerson with Decor
 
     val r = makeSumReporter(sumSequence, echoDouble)
 
-    r(doubles)
+    r(doubles) // 234.0
 
     val string = "This is a testing."
 
     val s = makeProtection(protect, echoString)
+    // Vector(87, 107, 108, 118, 35, 108, 118, 35, 100, 35, 119, 104, 118, 119, 108, 113, 106, 49)
 
     s(string)
 
@@ -351,24 +353,26 @@ object Demo extends io.IO with Register with NonIterator with SPerson with Decor
     /**
      * Replace null object
      */
-    echo(some.getOrElse("default"))
-    echo(none.getOrElse("default"))
+    echo(some.getOrElse("default")) // foo
+    echo(none.getOrElse("default")) // default
 
-    echo(map.getOrElse(3, "default"))
+    echo(map.getOrElse(3, "default")) // default
 
     val mary = APerson("Mary", "Jane")
     val jack = APerson("Jack", "Miller")
     val somePeople = Map(1 -> mary, 2 -> jack)
 
-    echo(fetchAPerson(somePeople, 3))
+    echo(fetchAPerson(somePeople, 3)) // APerson(Peter, Parker)
 
     val aV = Vector("a")
     val bS = Some("b")
     val cS = Some("c")
     val nN = None
 
+    // If any of generators produces a None, then the value of the entire
+    // expression is a None.
     val result = for (b <- bS; n <- nN) yield (b, n)
-    echo(result)
+    echo(result) // None
 
     echo("")
 
@@ -376,17 +380,32 @@ object Demo extends io.IO with Register with NonIterator with SPerson with Decor
      * Replace decorator
      */
     val loggedAdd = loggingAdd(2, 3)
-    echo(loggedAdd)
+    echo(loggedAdd) // Result is 5
+    // 5
 
     echo("")
 
     /**
      * Replace visitor
      */
+    // Add new methods to an existing type
     val simplePerson = new SimplePerson("Kason", "Chan", 1234, "Real. St.")
 
     echo(simplePerson.fullname) // Kason Chan
 
     echo(simplePerson.fullAddress) // 1234 Real. St.
+
+    // Extend a data type with both new operations and new implementations
+    val vname = new VName("Kason", "Chan")
+
+    val vaddress = new VAddress(1234, "Real. St.")
+
+    val vcomplexPerson = new VComplexPerson(vname, vaddress)
+
+    echo(vcomplexPerson.fullname) // Kason Chan
+
+    echo(vcomplexPerson.fullAddress) // 1234 Real. St.
+
+    echo("")
   }
 }

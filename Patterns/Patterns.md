@@ -444,6 +444,8 @@ conversion** system. This allows us to add new operations to existing libraries.
 2. Take advantage of Scala's **mix-in inheritance** and `trait`. This allows
 us to add both new operations and new implementation to a data type.
 
+The follow code snippet shows how to add new methods to an existing type.
+
 ```scala
     trait Person {
       def fullname: String
@@ -453,7 +455,7 @@ us to add both new operations and new implementation to a data type.
       def street: String
     }
     
-    // Use mix-in inheritance and trait
+    // Mix-in inheritance and trait
     class SimplePerson(val firstname: String, val lastname: String, 
     val houseNum: Int, val street: String) extends Person {
       def fullname = firstname + " " + lastname
@@ -463,10 +465,35 @@ us to add both new operations and new implementation to a data type.
     
     simplePerson.fullName // Kason Chan
     
-    // Use implicit conversion
+    // Implicit conversion
     implicit class ExtendedPerson(person: Person) {
       def fullAddress = person.houseNum + " " + person.street
     }
     
     simplePerson.fullAddress // 1234 Real. St.
+```
+
+The following code snippet shows how to extend a data type with both new 
+operations and new implementations.
+
+```scala
+    class VAddress(val houseNum: Int, val street: String)
+
+    class VName(val firstname: String, val lastname: String)
+
+    class VComplexPerson(name: VName, address: VAddress) extends VPerson {
+      def fullname = name.firstname + " " + name.lastname
+      def firstname = name.firstname
+      def lastname = name.lastname
+      
+      def houseNum = address.houseNum
+      def street = address.street
+    }
+    
+    val vname = new VName("Kason", "Chan")
+    val vaddress = new VAddress(1234, "Real. St.")
+    val vcomplexPerson = new VComplexPerson(vname, vaddress)
+    
+    echo(vcomplexPerson.fullname) // Kason Chan
+    echo(vcomplexPerson.fullAddress) // 1234 Real. St.
 ```
