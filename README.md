@@ -51,6 +51,7 @@ such as code snippets, basic project set up, templates, etc.
     - [Replace null object](Patterns/Patterns.md#replace-null-object)
     - [Replace decorator](Patterns/Patterns.md#replace-decorator)
     - [Replace visitor](Patterns/Patterns.md#replace-visitor)
+    - [Rplace dependency injection](Patterns/Patterns.md#replace-dependency-injection)
 - [Swing](Swing/Swing.md)
 
 [References](References/References.md)

@@ -407,5 +407,10 @@ object Demo extends io.IO with Register with NonIterator with SPerson with Decor
     echo(vcomplexPerson.fullAddress) // 1234 Real. St.
 
     echo("")
+
+    /**
+     * Replace dependency injection
+     * Refer to package dependencyinjection
+     */
   }
 }

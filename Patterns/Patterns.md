@@ -497,3 +497,84 @@ operations and new implementations.
     echo(vcomplexPerson.fullname) // Kason Chan
     echo(vcomplexPerson.fullAddress) // 1234 Real. St.
 ```
+
+### Replace dependency injection
+
+Dependency Injection is to inject an object's dependencies through a constructor
+or setter. Its intent is to compose object together using an external 
+configuration or code, rather than having an object instantiate it own 
+dependencies. This allows us to inject different dependency implementations
+into an object and provide centralized place to understand what dependencies
+a given object has.
+
+Dependency injection is handy for swapping out a real dependency with a stub in
+a unit test. Also, it makes it easier to declaratively specify the overall shape
+of a system as each component has its dependencies injected into it in a 
+configuration file or in a bit of configuration code with appropriate container
+support.
+
+Composing functions in functional programming is naturally involved. **Cake
+pattern** use Scala `trait`s and self-type annotations to accomplish the same
+functionality that we get with Dependency Injection without the need for a 
+container.
+
+```scala
+    case class Book(bookId: String, title: String)
+    
+    case class Page(bookId: String)
+    
+    case class DecoratedBook(book: Book, page: Page)
+    
+    //  Define some traits as interfaces for dependencies
+    trait BookDaoComponent {    
+      trait BookDao {
+        def getBook(id: String): Book
+      }
+    }
+
+    trait FavouritesServiceComponent {
+      trait FavouritesService {
+        def getFavouritePages(id: String): Vector[Page]
+      }
+    }
+  
+    // Stub out to return static responses by implementing the interfaces
+    trait BookDaoComponentImpl extends BookDaoComponent {
+      class MovieDaoImpl extends BookDao {
+        def getBook(id: String): Book = new Book("1", "A")
+      }
+    }
+  
+    // Stub out to return static responses by implementing the interfaces
+    trait FavouritesServiceComponentImpl extends FavouritesServiceComponent {
+      class FavouritesServiceImpl extends FavouritesService {
+        def getFavouritePages(id: String): Vector[Page] = Vector(Page("1"))
+        def getFavouriteBooks(id: String): Vector[Page] = Vector(new Page("1"))
+      }
+    }
+  
+    trait BookServiceComponentImpl {
+      // Self-type annotation ensures whenver mixed into an object or class,
+      // this reference of that object has the type of below
+      this: BookDaoComponent with FavouritesServiceComponent =>
+      val favouritesService: FavouritesService
+      val bookDao: BookDao
+ 
+      class BookServiceImpl {
+        def getFavouriteDecoratedBooks(userId: String): Vector[DecoratedBook] =
+          for (
+            favouriteBook <- favouritesService.getFavouritePages(userId);
+            val book = bookDao.getBook((favouriteBook.bookId))
+          ) yield DecoratedBook(book, favouriteBook)
+      }
+    }
+    
+    object ComponentRegistry extends BookServiceComponentImpl
+    with FavouritesServiceComponentImpl with BookDaoComponentImpl {
+    
+      val favouritesService = new FavouritesServiceImpl
+      val bookDao = new BookDaoImpl
+    
+      val bookService = new BookServiceImpl
+    }
+```
