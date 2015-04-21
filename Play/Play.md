@@ -43,3 +43,44 @@ the system, etc.
     Logger.info(...)
     ...
 ```
+
+### LESS CSS
+
+LESS CSS is a dynamic stylesheet language. It provides greater flexibility in
+writing CSS files. The LESS source file at `app/assets/stylesheets/main.less`
+will become a standard resource Include 
+`addSbtPlugin("com.typesafe.sbt" % sbt-less" % "1.0.6")` in 
+`project/plugins.sbt`. LESS sources are compiled automatically during `compile`,
+or when refresh any page in browser in development mode.
+
+Partial LESS sources files can be defined with underscore `_` character to 
+prevent library files from being compiled individually (or imported).
+
+```
+    app
+     |-assets
+        |-stylesheets
+           |-main.less
+           |-utils
+              |-_less.less
+```
+
+```less
+    // main.less
+    @import "utils/_colors.less";
+    
+    body {
+      background-color: @red'
+    }
+```
+
+```less
+    // _color.less
+    @red: #F44336;
+```
+
+The resulting CSS file will be compiled as `public/stylesheets/main.css`, and
+it can be use in template as any regular public asset 
+`<link rel="stylesheet href="@routes.Assets.at("stylesheets/main.css")">`. 
+A minified version too
+`<link rel="stylesheet" href="@routes.Assets.at("stylesheets/main.min.css")">`
