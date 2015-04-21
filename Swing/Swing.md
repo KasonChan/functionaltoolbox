@@ -1,4 +1,4 @@
 ## Swing
 
-This is first Scala program to use java swing library to create some user 
+This my first Scala program built with java swing library to create a user 
 interface.

@@ -53,6 +53,7 @@ such as code snippets, basic project set up, templates, etc.
     - [Replace visitor](Patterns/Patterns.md#replace-visitor)
     - [Rplace dependency injection](Patterns/Patterns.md#replace-dependency-injection)
 - [Swing](Swing/Swing.md)
+- [Play](Play/Play.md)
 
 [References](References/References.md)
 
