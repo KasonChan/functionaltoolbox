@@ -48,8 +48,9 @@ the system, etc.
 
 LESS CSS is a dynamic stylesheet language. It provides greater flexibility in
 writing CSS files. The LESS source file at `app/assets/stylesheets/main.less`
-will become a standard resource Include 
-`addSbtPlugin("com.typesafe.sbt" % sbt-less" % "1.0.6")` in 
+will become a standard resource. 
+
+Include `addSbtPlugin("com.typesafe.sbt" % sbt-less" % "1.0.6")` in 
 `project/plugins.sbt`. LESS sources are compiled automatically during `compile`,
 or when refresh any page in browser in development mode.
 
@@ -84,3 +85,24 @@ it can be use in template as any regular public asset
 `<link rel="stylesheet href="@routes.Assets.at("stylesheets/main.css")">`. 
 A minified version too
 `<link rel="stylesheet" href="@routes.Assets.at("stylesheets/main.min.css")">`
+
+### SASS/SCSS CSS
+
+SASS/SCSS CSS is another dynamic stylesheet language. The source file at 
+`app/assets/stylesheets/main.sass` or `app/assets/stylesheets/main.scss`
+will become a standard resource. 
+
+Include 
+`resolvers += "Sonatype OSS Releases" at "https://oss.sonatype.org/content/repositories/releases"`
+and `addSbtPlugin("net.litola" % "play-sass" % "0.4.0")` in 
+`project/plugins.sbt`. 
+SASS/SCSS sources are compiled automatically during `compile`,
+or when refresh any page in browser in development mode. Include the following
+in the `build.sbt` file:
+```
+    lazy val root = (project in file("."))
+      .enablePlugins(PlayScala, net.litola.SassPlugin)
+      .settings(
+        sassOptions := Seq("--compass")
+      )
+```
