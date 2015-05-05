@@ -19,5 +19,14 @@
 - https://www.playframework.com/documentation/2.0/ScalaAsync
 - https://www.playframework.com/documentation/2.3.x/ScalaWS
 - https://www.playframework.com/documentation/2.3.x/ScalaLogging
+
+#### LESS CSS
 - https://www.playframework.com/documentation/2.0/AssetsLess
+
+#### SASS/SCSS CSS
+
 - https://github.com/jlitola/play-sass
+
+#### Webjars
+
+- http://www.webjars.org/documentation

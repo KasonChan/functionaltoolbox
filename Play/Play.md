@@ -106,3 +106,29 @@ in the `build.sbt` file:
         sassOptions := Seq("--compass")
       )
 ```
+
+### Webjars
+
+To use webjars, include the following in the `build.sbt`: 
+
+```
+libraryDependencies ++= Seq(
+  ...
+  "org.webjars" %% "webjars-play" % "2.3.0-2",
+  "org.webjars" % "jquery" % "2.1.4"
+)
+```
+
+New route is needed in the `conf/routes` for `webjars` wrapper around the Play 
+Static Asset Controller that can locate and serve WebJar asset:
+
+```
+GET     /webjars/*file                    controllers.WebJarAssets.at(file)
+```
+
+To use Play's reverse routing to resolve the URL to an asset in a template:
+
+```
+<script type='text/javascript' 
+src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.min.js"))'></script>
+```
