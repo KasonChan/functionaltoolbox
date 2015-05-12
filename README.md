@@ -54,6 +54,7 @@ such as code snippets, basic project set up, templates, etc.
     - [Rplace dependency injection](Patterns/Patterns.md#replace-dependency-injection)
   - [Functional patterns](FunctionalPatterns/Patterns.md#functional-patterns)
     - [Filter-Map-Reduce](FunctionalPatterns/Patterns.md#Filter-Map-Reduce)
+    - [Chain of operations](FunctionalPatterns/Patterns.md#chain-of-operations)
 - [Swing](Swing/Swing.md)
 - [Play](Play/Play.md)
 

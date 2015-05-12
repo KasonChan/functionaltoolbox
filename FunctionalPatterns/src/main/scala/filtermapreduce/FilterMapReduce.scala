@@ -5,6 +5,11 @@ package filtermapreduce
  */
 trait FilterMapReduce {
 
+  /**
+   * Calculate the total discount with anonymous functions
+   * @param prices Seq[Double]
+   * @return Double
+   */
   def calculateTotalDiscount(prices: Seq[Double]): Double = {
     // Select the prices that are greater than 20.0
     prices filter (price => price >= 20.0) map
@@ -14,6 +19,11 @@ trait FilterMapReduce {
       ((total, price) => total + price)
   }
 
+  /**
+   * Calculate the total discount with named functions
+   * @param prices Seq[Double]
+   * @return Double
+   */
   def calculateTotalDiscountNamed(prices: Seq[Double]): Double = {
     // Select the prices that are greater than 20.0
     def isGreaterThan20(price: Double) = price >= 20.0

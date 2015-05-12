@@ -15,3 +15,11 @@ prefered.
         (reduce function)
 ```
 
+### Chain of Operations
+
+Intent to chain a sequence of computations together like `Filter-Map-Reduce`, 
+this allows us to work with immutable data without storing lots of temporary 
+results. Since we do not mutate a data structure, we send immutable one through 
+a series of transformations. This pattern can lead to succinct code. This also 
+can avoid creating noisy temporary values. The chain of operations can include 
+`map`, `filter`, `reduce`, `mkstring`, and other higher-order functions.
