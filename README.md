@@ -52,6 +52,8 @@ such as code snippets, basic project set up, templates, etc.
     - [Replace decorator](Patterns/Patterns.md#replace-decorator)
     - [Replace visitor](Patterns/Patterns.md#replace-visitor)
     - [Rplace dependency injection](Patterns/Patterns.md#replace-dependency-injection)
+  - [Functional patterns](FunctionalPatterns/Patterns.md#functional-patterns)
+    - [Filter-Map-Reduce](FunctionalPatterns/Patterns.md#Filter-Map-Reduce)
 - [Swing](Swing/Swing.md)
 - [Play](Play/Play.md)
 
