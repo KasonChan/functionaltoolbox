@@ -129,3 +129,49 @@ by `==` will be contained in the set at any one time.
     sequence foldRight (accumulator) (function)
     (sequence :\ accumulator) (function)
 ```
+
+--------------------------------------------------------------------------------
+
+## Composition
+
+### `compose`
+
+Two functions `g` and `f` compose: `h = g·f` which is shorthand for 
+`h(x) = g(f(x))` in algebra. 
+
+```scala
+    val f: Int => String
+    val g: String => Float
+    val h: Int => Float = g compose f
+```
+
+```scala
+    val fg = f _ compose g _
+    val fg1 = fg("Hello")
+    println(fg1) // f(g[Hello])
+```
+
+```scala
+    val ma = square _ compose add _
+    val ma1 = ma(3)
+    println(ma1) // = 3 + 3 = 6 = 6 * 6 = 36
+```
+
+### `andThen`
+
+`andThen` is like compose, but calls the first function and then the second, 
+`g(f(x))`.
+
+```scala
+    val gf = f _ andThen g _
+    val gf1 = gf("World")
+    println(gf1) // g[f(World)]
+```
+
+```scala
+    val am = square _ andThen add _
+    val am1 = am(3)
+    println(am1) // = 3 * 3 = 9 = 9 + 9 = 18
+```
+
+Note that composition functions can only take one parameter.

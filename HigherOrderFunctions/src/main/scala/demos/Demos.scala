@@ -321,6 +321,28 @@ object Demos {
     //    Concatenates lists together
     //    List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
     echo(List.concat(numbers, numbers))
+
+    /**
+     * Composition
+     */
+
+    val fg = f _ compose g _
+    val gf = f _ andThen g _
+
+    val ma = square _ compose add _
+    val am = square _ andThen add _
+
+    val fg1 = fg("Hello")
+    println(fg1) // f(g[Hello])
+
+    val gf1 = gf("World")
+    println(gf1) // g[f(World)]
+
+    val ma1 = ma(3)
+    println(ma1) // = 3 + 3 = 6 = 6 * 6 = 36
+
+    val am1 = am(3)
+    println(am1) // = 3 * 3 = 9 = 9 + 9 = 18
   }
 
   //  Add list to the parameter x such that List(x - 1, x, x + 1)
@@ -348,4 +370,11 @@ object Demos {
 
   case class Identity(first: String, last: String, id: Int)
 
+  def square(x: Int): Int = x * x
+
+  def add(x: Int): Int = x + x
+
+  def f(s: String): String = "f(" + s + ")"
+
+  def g(s: String): String = "g[" + s + "]"
 }
