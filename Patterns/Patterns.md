@@ -48,6 +48,8 @@ Anonymous function and named function can reduces the syntatic overhead of many
 common tasks. Higher-order function doesn't need a new type for each type of 
 functional interface when just existing function types will do.
 
+--------------------------------------------------------------------------------
+
 ### Replace state-carrying functional interface
 
 Functional interface implementations that need state using a construct called 
@@ -72,6 +74,8 @@ It can be replaced by some higher-order function.
 
      def makeComparisons(comparisons: (type, type, ...) => ...) = ...
 ```
+
+--------------------------------------------------------------------------------
 
 ### Replace command
 
@@ -118,6 +122,8 @@ logging command.
 ```
 
 This pattern is a replacement for the full pattern in invoker/receiver/client.
+
+--------------------------------------------------------------------------------
 
 ### Replace builder for immutable object
 
@@ -207,6 +213,8 @@ Reference them by position to get values back or use pattern matching.
     }
 ```
 
+--------------------------------------------------------------------------------
+
 ### Replace iterator
 
 Iterator is an object that allows us to iterator over all the objects in a 
@@ -288,6 +296,8 @@ following code snippets show filtering, prepending and accumulating a sequence.
      accmulate(sequence)
 ```
 
+--------------------------------------------------------------------------------
+
 ### Replace template
 
 Template method pattern consists of an abstract class that defines some 
@@ -327,6 +337,8 @@ composition** and higher-order functions. In OOP, use
 rather than using **template method** and subclassing. This helps prevent code 
 duplication. **Composition** does better job of making an API explicit.
 
+--------------------------------------------------------------------------------
+
 ### Replace strategy
 
 Strategy consists of an interface that represents some algorithm such as 
@@ -360,6 +372,8 @@ across several different clients.
 Strategy and template method server smiliar ends. **Strategy** uses 
 **composition** and **template method** use **inheritance**, but we replace both
 patterns with ones based on **functional composition**.
+
+--------------------------------------------------------------------------------
 
 ### Replace null object
 
@@ -403,6 +417,8 @@ is a `None`.
     for (b <- bSome; n <- none) yield (b, n) // None
 ```
 
+--------------------------------------------------------------------------------
+
 ### Replace decorator
 
 Decorator is used when we need to add some behavior to an existing class and we
@@ -428,6 +444,8 @@ existing function and returns a new, wrapped function.
     
     loggingAdd(2, 3) // Result is 5
 ```
+
+--------------------------------------------------------------------------------
 
 ### Replace visitor
 
@@ -497,6 +515,8 @@ operations and new implementations.
     echo(vcomplexPerson.fullname) // Kason Chan
     echo(vcomplexPerson.fullAddress) // 1234 Real. St.
 ```
+
+--------------------------------------------------------------------------------
 
 ### Replace dependency injection
 
