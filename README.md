@@ -58,6 +58,7 @@ such as code snippets, basic project set up, templates, etc.
   - [Functional patterns](FunctionalPatterns/Patterns.md#functional-patterns)
     - [Filter-Map-Reduce](FunctionalPatterns/Patterns.md#Filter-Map-Reduce)
     - [Chain of operations](FunctionalPatterns/Patterns.md#chain-of-operations)
+    - [Function builder](FunctionalPatterns/Patterns.md#function-builder)
 - [Swing](Swing/Swing.md)
 - [Play](Play/Play.md)
 
