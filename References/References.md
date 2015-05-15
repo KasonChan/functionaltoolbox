@@ -21,6 +21,7 @@
 - https://www.playframework.com/documentation/2.3.x/ScalaLogging
 
 #### LESS CSS
+
 - https://www.playframework.com/documentation/2.0/AssetsLess
 
 #### SASS/SCSS CSS

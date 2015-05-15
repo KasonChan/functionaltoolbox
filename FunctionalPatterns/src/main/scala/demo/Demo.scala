@@ -3,12 +3,13 @@ package demo
 import chainofoperations.ChainOfOperations
 import filtermapreduce.FilterMapReduce
 import functionbuilder.FunctionBuilder
+import memoization.Memoization
 
 /**
  * Created by kasonchan on 5/11/15.
  */
 object Demo extends FilterMapReduce with ChainOfOperations with
-FunctionBuilder {
+FunctionBuilder with Memoization {
 
   def main(args: Array[String]) {
 
@@ -127,6 +128,25 @@ FunctionBuilder {
 
     println(add5First(10)) // 15
     println(add5Second(10)) // 15
+
+    /** ***********************************************************************/
+
+    /**
+     * Memoization
+     */
+    println(memoizeLookup(42))
+    println(memoizeLookup(42))
+
+    val memoizedLookup1 = memoizeLookup
+    val memoizedLookup2 = memoizeLookup
+
+    println(memoizedLookup1(1))
+    println(memoizedLookup1(1))
+    println(memoizedLookup1(1))
+
+    println(memoizedLookup2(1))
+    println(memoizedLookup2(1))
+    println(memoizedLookup2(1))
   }
 
 }

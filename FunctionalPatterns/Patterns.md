@@ -73,3 +73,34 @@ that function takes and returns a new function.
     val function2 = function1(i, _)
     function2(x)
 ```
+
+--------------------------------------------------------------------------------
+
+### Memoization
+
+Intent to avoid performing the same computation more than once by caching the 
+results of a pure function call. We can do this by writing a function that keeps 
+track of its previous arguments. When it is called, it first checks its cache to 
+see if it has already been called with the passed-in arguments. If it has, it 
+returns the cached value. Otherwise, it performs the computation.
+
+```scala
+    def expensiveLookup(target: Any) = {
+      ...
+    }
+```
+
+```scala
+    def memoize() = {
+      var cache = Map[Any, Option[Any]]()
+      (target: Any) =>
+        cache.get(target) match {
+          case Some(result: Option[String]) => result
+          case None => {
+            val result = expensiveLookup(target)
+            cache += id -> result
+            result
+          }
+        }
+    }
+```
