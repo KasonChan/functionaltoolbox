@@ -2,6 +2,7 @@ package demo
 
 import chainofoperations.ChainOfOperations
 import filtermapreduce.FilterMapReduce
+import focusedmutability.FocusedMutability
 import functionbuilder.FunctionBuilder
 import memoization.Memoization
 
@@ -9,7 +10,7 @@ import memoization.Memoization
  * Created by kasonchan on 5/11/15.
  */
 object Demo extends FilterMapReduce with ChainOfOperations with
-FunctionBuilder with Memoization {
+FunctionBuilder with Memoization with FocusedMutability {
 
   def main(args: Array[String]) {
 
@@ -148,5 +149,14 @@ FunctionBuilder with Memoization {
     println(memoizedLookup2(1))
     println(memoizedLookup2(1))
   }
+
+  /** ***********************************************************************/
+
+  /**
+   * Focused mutability
+   */
+  val fiveNumbers = infiniteNumbers take 5 force
+
+  for (number <- fiveNumbers) println(number)
 
 }
