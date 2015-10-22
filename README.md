@@ -15,6 +15,8 @@ such as code snippets, basic project set up, templates, etc.
   - [`require` keyword](Classes/Classes.md#require-override-and-tostring)
   - [`override` modifier](Classes/Classes.md#require-override-and-tostring)
   - [`toString` function](Classes/Classes.md#require-override-and-tostring)
+  - [`apply` function](Classes/Classes.md#apply-and-unapply)
+  - [`unapply` function](Classes/Classes.md#apply-and-unapply)
 - [Pattern matching](Classes/Classes.md)
   - [```_*```](Classes/Classes.md#specify-last-element-in-sequence)
   - [Variable binding](Classes/Classes.md#variable-binding)
