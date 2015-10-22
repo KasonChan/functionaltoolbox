@@ -1,6 +1,6 @@
 package demo
 
-import classes.{Car, Motorcycle, Truck}
+import classes.{Email, Car, Motorcycle, Truck}
 import io.IO
 
 /**
@@ -94,6 +94,16 @@ object Demos extends IO {
     echo(describe(s))
     echo(describe2(s))
 
+    echo("")
+
+    /**
+     * Injection and Extraction
+     */
+    val email = Email("a", "a.com")
+
+    echo(email)
+    echo(Email.unapply(email))
+
   }
 
   /**
@@ -115,6 +125,7 @@ object Demos extends IO {
    */
   def describe(v: Polygon): String = v match {
     case Square(n, Sides(s)) => n + " has " + s + " sides."
+    case _ => "I don't know"
   }
 
   /**

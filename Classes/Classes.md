@@ -30,6 +30,23 @@ constructor. It is a requirement which callers must fulfill.
       override def toString = ...
     }
 ```
+
+### `apply` and `unapply`
+
+- `apply` gives a nice syntactic sugar for when a class or object has one main use.
+It is called an _injection_.
+- `unapply` is called an _extraction_.
+- _Injection_ and _extraction_ are often grouped together in one object.
+- Object's name are used for both a _contructor_ and a _pattern_.
+
+```scala
+    Email.unapply(Email.apply(user, domain)) // Returns Some(user, domain)
+    
+    Email.unapply(obj) match {
+      case Some(u, d) => Email.apply(u, d)
+    }
+```
+
 --------------------------------------------------------------------------------
 
 ## Pattern matching
